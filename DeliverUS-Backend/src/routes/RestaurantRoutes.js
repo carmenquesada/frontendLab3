@@ -23,7 +23,9 @@ const loadFileRoutes = function (app) {
       RestaurantController.create)
 
   app.route('/restaurants/:restaurantId')
-    .get(RestaurantController.show)
+    .get(
+      checkEntityExists(Restaurant, 'restaurantId'),
+      RestaurantController.show)
     .put(
     // TODO: Add needed middlewares
       isLoggedIn,

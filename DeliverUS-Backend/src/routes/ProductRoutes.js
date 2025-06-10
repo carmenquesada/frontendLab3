@@ -13,9 +13,9 @@ const loadFileRoutes = (app) => {
       isLoggedIn,
       hasRole('owner'),
       handleFilesUpload(['image'], process.env.PRODUCTS_FOLDER),
-      ProductValidation.create,
-      handleValidation,
-      ProductMiddleware.checkProductRestaurantOwnership,
+      ProductValidation.create, // check the product data include valid values for each property in order to be created according to our information requirements.
+      handleValidation, // Se pone despues de un -Validation
+      ProductMiddleware.checkProductRestaurantOwnership, // Verifica que el restaurante al que pertenece el producto pertenece al usuario logueado
       ProductController.create
     )
   app.route('/products/popular')
